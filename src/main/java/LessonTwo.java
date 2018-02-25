@@ -7,15 +7,15 @@ import org.openqa.selenium.chrome.ChromeOptions;
 /**
  * Created by Администратор on 24.02.2018.
  */
-public class Main {
+public class LessonTwo {
 
-    public static final String URL = "http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/";
-    public static final String LOGIN = "webinar.test@gmail.com";
-    public static final String PASSWORD = "Xcg7299bnSmMuRLp9ITw";
+    private static final String URL = "http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/";
+    private static final String LOGIN = "webinar.test@gmail.com";
+    private static final String PASSWORD = "Xcg7299bnSmMuRLp9ITw";
 
     public static void main(String[] args) {
         scriptA();
-       // scriptB();
+        scriptB();
     }
 
     private static WebDriver initCromeDriver() {
@@ -73,8 +73,8 @@ public class Main {
                 By.id("subtab-AdminParentShipping"), By.id("subtab-AdminParentPayment"), By.id("subtab-AdminInternational"),
                 By.id("subtab-ShopParameters"), By.id("subtab-AdminAdvancedParameters")};
 
-        for (int i = 0; i < listLocators.length; i++) {
-            WebElement element = driver.findElement(listLocators[i]);
+        for (By listLocator : listLocators) {
+            WebElement element = driver.findElement(listLocator);
             element.click();
             String beforeRefresh = driver.findElement(By.tagName("h2")).getText();
             System.out.println("Before refresh: " + beforeRefresh);
